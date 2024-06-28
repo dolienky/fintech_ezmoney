@@ -24,14 +24,52 @@ The project aims to showcase the feasibility and functionality of a blockchain-p
 Installation intro
 
 ## 2.1 Truffle <a name="truffle"></a>
-Truffle
+Truffle is a development framework for Ethereum. It requires Node.js and npm (Node Package Manager) to be installed. Download and install Node.js from [nodejs.org](https://nodejs.org/).
 
+Then Truffle can be installed globally by typing the following into the **terminal**:
+```
+npm install -g truffle
+```
+The installation can be verified by checking the version through the **terminal**:
+```
+truffle version
+```
 
 ## 2.2 Ganache <a name="ganache"></a>
-Ganache
+Ganache is a personal blockchain for Ethereum development that runs locally on your PC. It simulates an Ethereum network environment without the need for real Ether, making it ideal for development and testing purposes. Follow the official instruction to download and install Ganache from [Ganache](https://archive.trufflesuite.com/ganache/).
 
 ## 2.3 Flask <a name="flask"></a>
+Flask is a lightweight web framework for Python, ideal for building web applications. Open your terminal and install Flask using pip.
+```
+pip install flask
+```
+If wanted, Flask installation can be verified by creating a simple Flask app and running it.
+Create a Python script *app.py* with the following structure:
+```
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
+
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+Run the above script. Then type in the **terminal** (at same directory as *app.py*):
+```
+python app.py
+```
+Then open your browser and go to [http://127.0.0.1:5000](http://127.0.0.1:5000). You should see a page with "Hello, World!".
 
 ## 2.4 Web3 <a name="web3"></a>
-
+Web3.py is a Python library for interacting with Ethereum. Use pip to install web3 as follows:
+```
+pip install web3
+```
+If wanted, the installation can be verified by checking the version in a Python terminal or script
+```
+import web3
+print(web3.__version__)
+```
 # 3. Instruction <a name="instruction"></a>
