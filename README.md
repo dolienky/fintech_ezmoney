@@ -8,7 +8,17 @@
 3. [Instruction](#instruction)
 
 # 1. Introduction <a name="introduction"></a>
-General intro
+This repository demonstrates an MVP (Minimum Viable Product) of a P2P Lending Platform based on blockchain technology. It is developed as a part of the FinTech courses in Erasmus University Rotterdam - School of Management. The course highlights the importance of applying modern techniques to improve challenges in the finance sectors. Overall, this MVP uses the following tools: 
+
+Key Tools Utilized:
+
+**Truffle and Ganache:** These are Node.js-based tools used for simulating the Ethereum blockchain environment. They facilitate smart contract development, testing, and deployment without incurring actual blockchain costs.
+
+**Flask:** A lightweight Python web framework utilized to render a local HTML user interface. Flask handles backend operations and serves as the intermediary between the frontend UI and blockchain interactions.
+
+**Web3:** Used in the backend to establish interactions between the Flask-powered backend and the Ethereum blockchain. Web3 enables transaction execution, smart contract interactions, and data retrieval.
+
+The project aims to showcase the feasibility and functionality of a blockchain-powered P2P lending platform. It emphasizes practical implementation and demonstration of blockchain technology's potential in financial applications, focusing on security, transparency, and efficiency enhancements.
 
 # 2. Installation <a name="installation"></a>
 Installation intro
