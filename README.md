@@ -21,7 +21,16 @@ Key Tools Utilized:
 The project aims to showcase the feasibility and functionality of a blockchain-powered P2P lending platform. It emphasizes practical implementation and demonstration of blockchain technology's potential in financial applications, focusing on security, transparency, and efficiency enhancements.
 
 # 2. Installation <a name="installation"></a>
-Installation intro
+The installation instruction is based on the author's operating system Windows 11 Home Version 21H2. Here the term **terminal** refers to the built-in Command Prompt or equivalently, the terminal of any compilers (Spyder, VSCode, PyCharm, etc.).
+
+In most cases, commands have to be executed in the same directory as the file. For example, to move from the root directory with the form of *C:\Users* to the Desktop directory *C:\Users\Desktop*, type the following:
+```
+cd Desktop
+```
+To return to the parent directory, use:
+```
+cd ..
+```
 
 ## 2.1 Truffle <a name="truffle"></a>
 Truffle is a development framework for Ethereum. It requires Node.js and npm (Node Package Manager) to be installed. Download and install Node.js from [nodejs.org](https://nodejs.org/).
