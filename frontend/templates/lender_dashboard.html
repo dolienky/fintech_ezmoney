@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lender Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 4px 2px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .btn-primary {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background-color: #45a049;
+        }
+        .btn-secondary {
+            background-color: #ccc;
+            color: white;
+            border: none;
+        }
+        .badge-success {
+            background-color: #28a745;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+        .badge-warning {
+            background-color: #ffc107;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Wallet Balance: {{ wallet_balance }} EUR</p> <!-- Display wallet_balance here -->
+        <h1>Loan Requests</h1>
+        <a href="/lender_loan_management?wallet_address={{ wallet_address }}" class="btn btn-primary">Loan Management</a> <!-- Link to Loan Management -->
+    </div>
+
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Loan ID</th>
+                    <th>Borrower Username</th>
+                    <th>Loan Amount (EUR)</th>
+                    <th>Loan Duration (months)</th>
+                    <th>Interest Rate (%)</th>
+                    <th>Potential Profit (EUR)</th>
+                    <th>Funded Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for loan in loans %}
+                <tr>
+                    <td>{{ loan.id }}</td>
+                    <td>{{ loan.username }}</td>
+                    <td>{{ loan.amount  }}</td>
+                    <td>{{ loan.duration }}</td>
+                    <td>{{ loan.interestRate }}</td>
+                    <td>{{ "%.4f" | format((loan.amount * loan.interestRate / 100)) }}</td>
+                    <td>
+                        {% if loan.funded %}
+                        <span class="badge-success">Funded</span>
+                        {% else %}
+                        <span class="badge-warning">Pending</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if not loan.funded %}
+                        <form action="/lender_confirmation" method="POST">
+                            <input type="hidden" name="loan_id" value="{{ loan.id }}">
+                            <input type="hidden" name="lender_wallet_address" value="{{ lender_wallet_address }}">
+                            <button type="submit" class="btn btn-primary">Approve</button>
+                        </form>
+                        {% else %}
+                        <button class="btn btn-secondary" disabled>Funded</button>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Repayment Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 50%;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Loan Repayment Confirmation</h1>
+        <form action="/repay_loan" method="POST">
+            <div class="form-group">
+                <label for="loan_id">Loan ID</label>
+                <input type="text" id="loan_id" name="loan_id" value="{{ loan.id }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="monthly_payment">Monthly Payment (ETH)</label>
+                <input type="text" id="monthly_payment" name="monthly_payment" value="{{ loan.monthlyPayment }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="lender_wallet_address">Lender's Wallet Address</label>
+                <input type="text" id="lender_wallet_address" name="lender_wallet_address" value="{{ loan.lender }}" readonly>
+            </div>
+            <div class="form-group">
+                <label for="private_key">Your Private Key</label>
+                <input type="password" id="private_key" name="private_key" required>
+            </div>
+            <button type="submit" class="btn">Repay Loan</button>
+        </form>
+    </div>
+</body>
+</html>

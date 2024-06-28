@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lender Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+        }
+        h1, h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+        }
+        .col-md-6 {
+            width: 48%;
+        }
+        .info-section {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .info-section p {
+            margin: 10px 0;
+        }
+        .info-section p strong {
+            color: #555;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 4px 2px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+        }
+        .btn-primary {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Loan Confirmation</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="info-section">
+                    <h2>Borrower Information</h2>
+                    <p><strong>Username:</strong> {{ loan.username }}</p>
+                    <p><strong>Wallet Address:</strong> {{ loan.wallet_address }}</p>
+                    <p><strong>Loan Amount (EUR):</strong> {{ loan.amount }}</p>
+                    <p><strong>Loan Duration (months):</strong> {{ loan.duration }}</p>
+                    <p><strong>Interest Rate (%):</strong> {{ loan.interestRate }}</p>
+                    <p><strong>Purpose:</strong> {{ loan.purpose }}</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="info-section">
+                    <h2>Lender Information</h2>
+                    <form action="/fund_loan" method="POST">
+                        <input type="hidden" name="loan_id" value="{{ loan.id }}">
+                        <div class="form-group">
+                            <label for="private_key">Enter Private Key:</label>
+                            <input type="text" id="private_key" name="private_key" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Fund Loan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

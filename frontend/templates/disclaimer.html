@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disclaimer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h1 {
+            color: #333333;
+            margin-bottom: 20px;
+        }
+        .message {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .message p {
+            font-size: 14px;
+            color: #666666;
+        }
+        .private-key {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 12px;
+            word-wrap: break-word;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Disclaimer</h1>
+        <div class="message">
+            <p>We are a non-custodial platform that respects your privacy. Therefore, we don't store your wallet's private key.</p>
+            <p>Please store the following key in a safe place:</p>
+        </div>
+        <div class="private-key">
+            {{ private_key }}
+        </div>
+        <form action="/login" method="get">
+            <button type="submit" class="btn">I understand and have stored my private key</button>
+        </form>
+    </div>
+</body>
+</html>
