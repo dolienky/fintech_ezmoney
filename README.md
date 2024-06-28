@@ -102,3 +102,4 @@ truffle migrate --reset
 ```
 python app.py
 ```
+- If you want to test the repayLoan function (in which borrower pays one of the installments), please use the private key of one of the accounts created in the beginning by Ganache. One of the limitations of Ganache is that, you can make transaction from existing account to new account, but not vice versa. The smart contract itself works well.
